@@ -1,30 +1,207 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <header>
+    <router-link to="/" class="nav-link">Is this wise?</router-link>
+  </header>
+
+  <nav>
+    <router-link to="/login" class="nav-link">Login</router-link>
+  </nav>
+
+  <main class="content-box">
+    <router-view />
+  </main>
 </template>
 
 <style>
+/*Font Key
+For headers
+font-family: "GeosansLight-NMS", sans-serif;
+
+For most other body stuff
+font-family: 'Raleway', sans-serif;
+font-family: 'Literata', serif;
+*/
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background-color: rgb(2, 60, 104);
+  font-family: "Raleway", sans-serif;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 4.5rem auto;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
+h1 {
+  font-size: 4rem;
   font-weight: bold;
-  color: #2c3e50;
+  font-family: "GeosansLight-NMS", sans-serif;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: "GeosansLight-NMS", sans-serif;
+}
+
+h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-family: "GeosansLight-NMS", sans-serif;
+}
+
+header,
+nav {
+  grid-column: span 6;
+  height: 4.5rem;
+  background-color: rgba(45, 52, 54, 1);
+  font-family: "GeosansLight-NMS", sans-serif;
+  font-size: 2.5rem;
+  color: rgba(234, 246, 229, 1);
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  justify-content: flex-end;
+}
+
+a.nav-link {
+  color: rgba(234, 246, 229, 1);
+  height: 100%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 500ms ease-in-out, color 300ms ease-in-out;
+}
+
+a.nav-link:hover {
+  color: rgb(45, 52, 54);
+  background-color: rgb(80, 163, 227);
+}
+
+main.content-box {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  color: rgba(234, 246, 229, 1);
+  padding: 2rem 0;
+}
+
+/* Home page */
+
+div.intro-block {
+  grid-column: 3 / 10;
+  font-size: 1.6rem;
+  margin: 0 auto 3rem auto;
+}
+
+div.user-choice {
+  grid-column: 3 / 10;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+div.user-choice a {
+  border-top: 1px solid #00df7e;
+  background: #24db8c;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#00b667),
+    to(#24db8c)
+  );
+  background: -webkit-linear-gradient(top, #00b667, #24db8c);
+  background: -moz-linear-gradient(top, #00b667, #24db8c);
+  background: -ms-linear-gradient(top, #00b667, #24db8c);
+  background: -o-linear-gradient(top, #00b667, #24db8c);
+  padding: 5px 10px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+  -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+  box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+  color: #453645;
+  font-size: 14px;
+  font-family: "Literata", serif;
+  text-decoration: none;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  width: 15rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.user-choice a:hover {
+  border-top-color: #00703f;
+  background: #00703f;
+  color: #ccc;
+}
+
+div.user-choice a:active {
+  border-top-color: #014727;
+  background: #014727;
+}
+
+div.user-choice a span {
+  text-align: center;
+}
+
+/* Quick advice rules */
+
+div.advice-container {
+  height: 20rem;
+  background-color: rgba(240, 248, 255, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 3 / 10;
+  font-size: 2.7rem;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive Rules */
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 950px) {
+}
+
+@media screen and (max-width: 750px) {
+  header {
+    grid-column: span 4;
+  }
+
+  nav {
+    grid-column: span 8;
+    justify-content: space-around;
+  }
+
+  a.nav-link {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  input {
+    font-size: 2rem;
+  }
+
+  div.breadcrumb span#page-title {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
 }
 </style>
