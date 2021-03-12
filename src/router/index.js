@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
+
 import Home from '../views/Home.vue';
 import QuickAdvice from '../views/QuickAdvice.vue';
+import RateAdvice from '../views/RateAdvice.vue';
+import Auth from '../views/Auth.vue';
 
 const routes = [
   {
@@ -12,6 +15,16 @@ const routes = [
     path: '/quick-advice',
     name: 'Quick Advice',
     component: QuickAdvice,
+  },
+  {
+    path: '/rate-advice',
+    name: 'Rate Advice',
+    component: RateAdvice,
+  },
+  {
+    path: '/login',
+    name: 'Auth Page',
+    component: Auth,
   },
 ];
 

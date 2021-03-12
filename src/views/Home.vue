@@ -12,7 +12,7 @@
 
   <div class="user-choice">
     <router-link to="/quick-advice"><span>I'm just here for some free advice.</span></router-link>
-    <a href="#"><span>I want to help!</span></a>
+    <a href="/rate-advice"><span>I want to help!</span></a>
   </div>
 </template>
 
