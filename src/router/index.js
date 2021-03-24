@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import Home from '../views/Home.vue';
-import QuickAdvice from '../views/QuickAdvice.vue';
-import RateAdvice from '../views/RateAdvice.vue';
-import Auth from '../views/Auth.vue';
+import Home from '../pages/Home.vue';
+import QuickAdvice from '../pages/QuickAdvice.vue';
+import RateAdvice from '../pages/RateAdvice.vue';
+import Auth from '../pages/Auth.vue';
 
 const routes = [
   {

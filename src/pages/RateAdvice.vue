@@ -30,6 +30,18 @@ export default {
     };
   },
   methods: {
+    authCheck() {
+      superagent
+        .get(`${process.env.VUE_APP_BACKEND_BASE}/auth/check`)
+        .withCredentials()
+        .set('Content-Type', 'application/json')
+        .then((response) => {
+          console.log(response.body.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     getAdvice() {
       // Disable the button preventing the user from requesting during the API rate limit cooldown
       this.canRequest = false;
@@ -62,6 +74,7 @@ export default {
     },
   },
   mounted() {
+    this.authCheck();
     this.getAdvice();
   },
 };
