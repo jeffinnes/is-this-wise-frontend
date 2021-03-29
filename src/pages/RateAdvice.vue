@@ -1,5 +1,6 @@
 <template>
   <div class="intro-block">
+    <h1 v-if="userFullName">Hello {{ userFullName }}</h1>
     <h1>Ready to help rate some advice?</h1>
     <h2>You are in the right spot!</h2>
   </div>
@@ -27,21 +28,10 @@ export default {
       advice: '',
       adviceID: null,
       canRequest: true,
+      userFullName: null,
     };
   },
   methods: {
-    authCheck() {
-      superagent
-        .get(`${process.env.VUE_APP_BACKEND_BASE}/auth/check`)
-        .withCredentials()
-        .set('Content-Type', 'application/json')
-        .then((response) => {
-          console.log(response.body.user);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
     getAdvice() {
       // Disable the button preventing the user from requesting during the API rate limit cooldown
       this.canRequest = false;
@@ -74,8 +64,8 @@ export default {
     },
   },
   mounted() {
-    this.authCheck();
     this.getAdvice();
+    this.userFullName = this.$store.getters.userFullName;
   },
 };
 </script>

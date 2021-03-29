@@ -12,6 +12,19 @@
   </main>
 </template>
 
+<script>
+export default {
+  methods: {
+    checkAuth() {
+      this.$store.dispatch('authCheck');
+    },
+  },
+  created() {
+    this.checkAuth();
+  },
+};
+</script>
+
 <style>
 /*Font Key
 For headers
