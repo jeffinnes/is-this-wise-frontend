@@ -10,9 +10,9 @@
   </div>
 
   <div class="user-choice">
-    <button v-if="canRequest" @click="rateAsGood">This is Good</button>
+    <button v-if="canRequest" @click="submitRating('good')">This is Good</button>
     <button v-if="canRequest" @click="getAdvice">¯\_(ツ)_/¯</button>
-    <button v-if="canRequest" @click="rateAsBad">This is Bad</button>
+    <button v-if="canRequest" @click="submitRating('bad')">This is Bad</button>
     <p v-if="!canRequest">
       Waiting for the API rate limit cooldown... (Wouldn't an animation be better?)
     </p>
@@ -49,13 +49,22 @@ export default {
 
       this.requestDelay();
     },
-    rateAsGood() {
-      // Do the rate as good stuff
-      this.getAdvice();
-    },
-    rateAsBad() {
-      // to the rate as bad stuff
-      this.getAdvice();
+    submitRating(rating) {
+      superagent
+        .post(`${process.env.VUE_APP_BACKEND_BASE}/api/v1/submit-rating`)
+        .withCredentials()
+        .set('Content-Type', 'application/json')
+        .send({
+          adviceID: this.adviceID,
+          submittedRating: rating,
+        })
+        .then((response) => {
+          console.log(response.body);
+          this.getAdvice();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     requestDelay() {
       setTimeout(() => {
