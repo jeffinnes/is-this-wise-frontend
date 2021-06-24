@@ -5,6 +5,7 @@ import Home from '../pages/Home.vue';
 import QuickAdvice from '../pages/QuickAdvice.vue';
 import RateAdvice from '../pages/RateAdvice.vue';
 import Auth from '../pages/Auth.vue';
+import Profile from '../pages/Profile.vue';
 
 // Import store for page guard
 import store from '../store/index';
@@ -34,7 +35,7 @@ const routes = [
   {
     path: '/profile',
     name: 'User Home',
-    component: null,
+    component: Profile,
     meta: { requiresAuth: true },
   },
 ];
@@ -46,8 +47,14 @@ const router = createRouter({
 
 // Auth guard
 router.beforeEach((to, _, next) => {
-  if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
-    next('/login');
+  if (!store.getters.isAuthenticated) {
+    store.dispatch('authCheck').then(() => {
+      if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
+        next('/login');
+      } else {
+        next();
+      }
+    });
   } else {
     next();
   }

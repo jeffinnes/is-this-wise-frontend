@@ -1,4 +1,5 @@
 /* eslint-disable no-underscore-dangle */
+import { Promise } from 'core-js';
 import superagent from 'superagent';
 
 // Not name spacing this module
@@ -28,19 +29,26 @@ export default {
     },
   },
   actions: {
-    async authCheck(context) {
-      superagent
-        .get(`${process.env.VUE_APP_BACKEND_BASE}/auth/check`)
-        .withCredentials()
-        .set('Content-Type', 'application/json')
-        .then((response) => {
-          if (response.body.user) {
-            context.commit('setUser', response.body.user);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    authCheck(context) {
+      return new Promise((resolve, reject) => {
+        console.log('Running authcheck');
+        superagent
+          .get(`${process.env.VUE_APP_BACKEND_BASE}/auth/check`)
+          .withCredentials()
+          .set('Content-Type', 'application/json')
+          .then((response) => {
+            if (response.body.user) {
+              console.log('response.body.user');
+              console.log(response.body.user);
+              context.commit('setUser', response.body.user);
+            }
+            resolve();
+          })
+          .catch((err) => {
+            console.log(err);
+            reject();
+          });
+      });
     },
   },
 };

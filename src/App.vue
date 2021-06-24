@@ -4,6 +4,7 @@
   </header>
 
   <nav>
+    <router-link to="/profile" class="nav-link">Profile</router-link>
     <router-link to="/login" class="nav-link">Login</router-link>
   </nav>
 
@@ -14,13 +15,28 @@
 
 <script>
 export default {
+  data() {
+    return {
+      ready: false,
+    };
+  },
   methods: {
-    checkAuth() {
-      this.$store.dispatch('authCheck');
+    /* async checkAuth() {
+      console.log('app.vue check auth');
+      await this.$store.dispatch('authCheck');
+      console.log('app.vue check auth complete');
+      this.ready = true;
+    }, */
+  },
+  calculated: {
+    authenticated() {
+      // ToDo I think I was going to use this to control the nav contents
+      // but it doesn't work
+      return this.$store.getters.isAuthenticated;
     },
   },
   created() {
-    this.checkAuth();
+    // this.checkAuth();
   },
 };
 </script>

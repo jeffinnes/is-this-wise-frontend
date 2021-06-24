@@ -1,6 +1,7 @@
 import { createStore } from 'vuex';
 
 import authModule from './modules/auth/index';
+import ratingsModule from './modules/ratings/index';
 
 export default createStore({
   state: {
@@ -11,5 +12,6 @@ export default createStore({
   },
   modules: {
     auth: authModule,
+    ratings: ratingsModule,
   },
 });

@@ -1,6 +1,6 @@
 <template>
   <div class="intro-block">
-    <h1>Welcome!</h1>
+    <h1>Welcome {{ userFullName }}!</h1>
     <p>
       Human history has produced a plethora of wisdom nuggets, but how much of
       it is actually any good?
@@ -22,8 +22,16 @@
 
 export default {
   name: 'Home',
+  data() {
+    return {
+      userFullName: null,
+    };
+  },
   components: {
 
+  },
+  mounted() {
+    this.userFullName = this.$store.getters.userFullName;
   },
 };
 </script>
