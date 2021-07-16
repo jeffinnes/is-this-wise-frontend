@@ -11,32 +11,30 @@ export default {
     userRatingHistory(state) {
       return state.userRatingHistory;
     },
+    hasHistory(state) {
+      return state.userRatingHistory.length > 0;
+    },
     allRatings(state) {
       return state.allRatings;
     },
   },
   mutations: {
     setUserRatings(state, payload) {
-      state.userRatingHistory = payload.userRatingHistory;
+      state.userRatingHistory = payload;
     },
     setAllRatings(state, payload) {
-      state.allRatings = payload.allRatings;
+      state.allRatings = payload;
     },
   },
   actions: {
     async fetchUserRatings(context) {
-      superagent
-        .get(`${process.env.VUE_APP_BACKEND_BASE}/api/v1/user-ratings`)
+      const response = await superagent.get(`${process.env.VUE_APP_BACKEND_BASE}/api/v1/user-ratings`)
         .withCredentials()
-        .set('Content-Type', 'application/json')
-        .then((response) => {
-          if (response.body) {
-            context.commit('setUserRatings', response.body.ratingHistory);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        .set('Content-Type', 'application/json');
+
+      if (response.body) {
+        context.commit('setUserRatings', response.body.ratingHistory);
+      }
     },
     async fetchAllRatings() {
       // Get all the ratings
