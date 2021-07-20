@@ -26,9 +26,8 @@ export default {
       // ToDo this end point doesn't work.
       // Come back to this after getting the advice text storing properly
       // See Jira issue ITW-24
-      const response = await superagent.get(`https://api.adviceslip.com/advice/${this.adviceSlipId}`);
-      console.log(response);
-      this.adviceText = 'slipObj.slip.advice;';
+      const response = await superagent.get(`${process.env.VUE_APP_BACKEND_BASE}/api/v1/advice-text/${this.adviceSlipId}`);
+      this.adviceText = response.body.adviceText;
       this.isLoading = false;
     },
   },
