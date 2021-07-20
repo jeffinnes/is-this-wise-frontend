@@ -15,6 +15,7 @@
     <button v-if="canRequest" @click="submitRating('bad')">This is Bad</button>
     <p v-if="!canRequest">
       Waiting for the API rate limit cooldown... (Wouldn't an animation be better?)
+      <base-spinner></base-spinner>
     </p>
   </div>
 </template>
@@ -56,6 +57,7 @@ export default {
         .set('Content-Type', 'application/json')
         .send({
           adviceID: this.adviceID,
+          adviceText: this.advice,
           submittedRating: rating,
         })
         .then((response) => {
