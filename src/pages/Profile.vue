@@ -1,15 +1,24 @@
 <template>
-  <p v-if="isLoading">Loading...</p>
-  <ul v-else-if="!isLoading && hasHistory">
-    <li v-for="advice in userRatingHistory" :key="advice._id">
-      {{advice._id}}: {{advice.adviceSlipID}} - {{advice.rating}}
-    </li>
-  </ul>
-  <p v-else>No rating history yet...</p>
+  <base-card>
+    <p v-if="isLoading">Loading...</p>
+    <div v-else-if="!isLoading && hasHistory">
+      <advice-item v-for="advice in userRatingHistory"
+      :key="advice._id"
+      :adviceSlipId="advice.adviceSlipID"
+      :rating="advice.rating">
+      </advice-item>
+    </div>
+    <p v-else>No rating history yet...</p>
+  </base-card>
 </template>
 
 <script>
+import AdviceItem from '../components/advice/AdviceItem.vue';
+
 export default {
+  components: {
+    AdviceItem,
+  },
   data() {
     return {
       isLoading: false,
@@ -37,8 +46,7 @@ export default {
   created() {
     this.fetchUserRatings();
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>
 
