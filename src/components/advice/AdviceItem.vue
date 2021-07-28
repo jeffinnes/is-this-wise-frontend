@@ -2,8 +2,8 @@
   <div class="main">
     <base-spinner v-if="isLoading"></base-spinner>
     <div v-else-if="!isLoading && adviceText">
-      <p>Advice: {{ adviceText }}</p>
-      <p>You though this advice was: {{ rating }}</p>
+      <p class="advice-text">"{{ adviceText }}"</p>
+      <p>You though this was <span :class="rating">{{ rating }}</span> advice.</p>
     </div>
     <p v-else>Something went wrong...</p>
   </div>
@@ -42,7 +42,20 @@ export default {
   margin: 1rem .5rem;
   border: dimgray 1px solid;
   padding: .5rem;
-  width: 30%;
-  height: 20rem;
+  width: 95%;
+}
+
+.advice-text {
+  font-weight: bold;
+}
+
+.good {
+  font-weight: bold;
+  color: green;
+}
+
+.bad {
+  font-weight: bold;
+  color: crimson;
 }
 </style>

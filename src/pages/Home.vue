@@ -1,14 +1,14 @@
 <template>
   <base-card class="intro-block">
     <h1 v-if="userFullName">Welcome back {{ userFullName }}!</h1>
-    <h3>
+    <p class="intro-text">
       Human history has produced a plethora of wisdom nuggets, but how much of
       it is actually any good?
-    </h3>
-    <h3>
+    </p>
+    <p class="intro-text">
       "Is this wise?" is an attempt to crowdsource the answer to that question.
-    </h3>
-    <p>Check out what others think of the advice below.
+    </p>
+    <p class="call-to-action">Check out what others think of the advice below.
       When you're ready to lend a hand, create an account and start rating!</p>
   </base-card>
 
@@ -41,6 +41,14 @@ export default {
 <style scoped>
   p {
     text-align: center;
+  }
+
+  p.intro-text {
+    font-size: 2.5rem;
+  }
+
+  p.call-to-action{
+    margin-top: 1.3rem;
   }
 
   div.intro-block {
