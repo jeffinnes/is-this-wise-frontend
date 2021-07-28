@@ -42,6 +42,7 @@ export default {
 </script>
 
 <style>
+@import './assets/css/reset.css';
 /*Font Key
 For headers
 font-family: "GeosansLight-NMS", sans-serif;
@@ -50,14 +51,28 @@ For most other body stuff
 font-family: 'Raleway', sans-serif;
 font-family: 'Literata', serif;
 */
+html {
+  height: 100%;
+  font-size: 10px;
+  background-image: url('./assets/background/HillsandMountains-sunset.png');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body {
+  /* background-color: rgb(2, 60, 104); */
+  font-family: 'Raleway', sans-serif;
+  height: 100%;
+}
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(2, 60, 104);
-  font-family: "Raleway", sans-serif;
+  /* background-color: rgb(2, 60, 104); */
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 4.5rem auto;
+  height: 100%;
 }
 
 h1 {
