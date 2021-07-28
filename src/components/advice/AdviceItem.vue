@@ -23,9 +23,6 @@ export default {
   methods: {
     async fetchAdviceText() {
       this.isLoading = true;
-      // ToDo this end point doesn't work.
-      // Come back to this after getting the advice text storing properly
-      // See Jira issue ITW-24
       const response = await superagent.get(`${process.env.VUE_APP_BACKEND_BASE}/api/v1/advice-text/${this.adviceSlipId}`);
       this.adviceText = response.body.adviceText;
       this.isLoading = false;
@@ -40,5 +37,12 @@ export default {
 <style scoped>
 .main {
   background-color: blanchedalmond;
+  color: black;
+  font-size: 2rem;
+  margin: 1rem .5rem;
+  border: dimgray 1px solid;
+  padding: .5rem;
+  width: 30%;
+  height: 20rem;
 }
 </style>
