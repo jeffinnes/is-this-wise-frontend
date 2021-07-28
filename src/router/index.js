@@ -5,7 +5,7 @@ import Home from '../pages/Home.vue';
 import QuickAdvice from '../pages/QuickAdvice.vue';
 import RateAdvice from '../pages/RateAdvice.vue';
 import Auth from '../pages/Auth.vue';
-import Profile from '../pages/Profile.vue';
+import History from '../pages/History.vue';
 
 // Import store for page guard
 import store from '../store/index';
@@ -33,9 +33,9 @@ const routes = [
     component: Auth,
   },
   {
-    path: '/profile',
+    path: '/history',
     name: 'User Home',
-    component: Profile,
+    component: History,
     meta: { requiresAuth: true },
   },
 ];

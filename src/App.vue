@@ -4,7 +4,7 @@
   </header>
 
   <nav>
-    <router-link to="/profile" class="nav-link">Profile</router-link>
+    <router-link to="/history" class="nav-link">My History</router-link>
     <router-link to="/login" class="nav-link">Login</router-link>
   </nav>
 

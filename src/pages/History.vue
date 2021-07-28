@@ -1,7 +1,10 @@
 <template>
-  <base-card>
+  <base-card class="greeting">
+    <h2>Take a trip down memory lane and review your past ratings!</h2>
+  </base-card>
+  <base-card class="hist-card">
     <p v-if="isLoading">Loading...</p>
-    <div v-else-if="!isLoading && hasHistory">
+    <div class="history" v-else-if="!isLoading && hasHistory">
       <advice-item v-for="advice in userRatingHistory"
       :key="advice._id"
       :adviceSlipId="advice.adviceSlipID"
@@ -50,5 +53,27 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+  div.card {
+    background-color: rgba(45, 52, 54, 1);
+  }
+
+  div.greeting {
+    grid-column: 2 / 11;
+  }
+
+  div.greeting h2 {
+    text-align: center;
+  }
+
+  div.hist-card {
+    grid-column: 2 / 11;
+  }
+
+  .history {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 </style>
