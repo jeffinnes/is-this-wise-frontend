@@ -42,14 +42,13 @@ export default {
 </script>
 
 <style>
-@import './assets/css/reset.css';
 /*Font Key
 For headers
-font-family: "GeosansLight-NMS", sans-serif;
+font-family: 'Roboto Slab', serif;
 
 For most other body stuff
 font-family: 'Raleway', sans-serif;
-font-family: 'Literata', serif;
+font-family: 'Montserrat', sans-serif;
 */
 html {
   height: 100%;
@@ -78,20 +77,20 @@ body {
 h1 {
   font-size: 4rem;
   font-weight: bold;
-  font-family: "GeosansLight-NMS", sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 h2 {
   font-size: 3rem;
   font-weight: bold;
-  font-family: "GeosansLight-NMS", sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
-  font-family: "GeosansLight-NMS", sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 header,
@@ -99,8 +98,8 @@ nav {
   grid-column: span 6;
   height: 4.5rem;
   background-color: rgba(45, 52, 54, 1);
-  font-family: "GeosansLight-NMS", sans-serif;
-  font-size: 2.5rem;
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
   color: rgba(234, 246, 229, 1);
   display: flex;
   align-items: center;
@@ -122,7 +121,7 @@ a.nav-link {
 
 a.nav-link:hover {
   color: rgb(45, 52, 54);
-  background-color: rgb(80, 163, 227);
+  background-color: rgb(255, 115, 91);
 }
 
 main.content-box {
@@ -138,7 +137,7 @@ main.content-box {
 div.intro-block {
   grid-column: 3 / 10;
   font-size: 1.6rem;
-  margin: 0 auto 3rem auto;
+  margin: 0 auto 0 auto;
 }
 
 div.user-choice {

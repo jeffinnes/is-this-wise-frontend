@@ -1,4 +1,9 @@
 import { createApp } from 'vue';
+
+// CSS Imports go before App.vue import so CSS cascades correctly
+import './assets/css/reset.css';
+import './assets/css/fonts.css';
+
 import App from './App.vue';
 import router from './router/index';
 import store from './store/index';
