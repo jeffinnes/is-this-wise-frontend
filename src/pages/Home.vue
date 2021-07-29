@@ -45,6 +45,7 @@ export default {
 
   p.intro-text {
     font-size: 2.5rem;
+    margin-top: 1rem;
   }
 
   p.call-to-action{

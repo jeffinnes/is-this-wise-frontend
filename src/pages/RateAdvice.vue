@@ -1,23 +1,25 @@
 <template>
-  <div class="intro-block">
-    <h1 v-if="userFullName">Hello {{ userFullName }}</h1>
-    <h1>Ready to help rate some advice?</h1>
-    <h2>You are in the right spot!</h2>
-  </div>
+  <base-card class="intro-card">
+    <div class="intro-block">
+      <h2 v-if="userFullName">Hello {{ userFullName }}</h2>
+      <h3>What do you think about this advice?</h3>
+    </div>
+  </base-card>
 
-  <div class="advice-container">
-    <span>{{ advice }}</span>
-  </div>
+  <base-card class="advice-card">
+    <div class="advice-container">
+      <span>{{ advice }}</span>
+    </div>
 
-  <div class="user-choice">
-    <button v-if="canRequest" @click="submitRating('good')">This is Good</button>
-    <button v-if="canRequest" @click="getAdvice">¯\_(ツ)_/¯</button>
-    <button v-if="canRequest" @click="submitRating('bad')">This is Bad</button>
-    <p v-if="!canRequest">
-      Waiting for the API rate limit cooldown... (Wouldn't an animation be better?)
-      <base-spinner></base-spinner>
-    </p>
-  </div>
+    <div class="user-choice">
+      <button v-if="canRequest" @click="submitRating('good')">This is Good</button>
+      <button v-if="canRequest" @click="getAdvice">¯\_(ツ)_/¯</button>
+      <button v-if="canRequest" @click="submitRating('bad')">This is Bad</button>
+      <p v-if="!canRequest">
+       Waiting for the API rate limit cooldown... (Wouldn't an animation be better?)
+      </p>
+    </div>
+  </base-card>
 </template>
 
 <script>
@@ -82,6 +84,19 @@ export default {
 </script>
 
 <style scoped>
+div.intro-block h2 {
+  margin-bottom: 1rem;
+}
+
+div.intro-card {
+  grid-column: 4 / 9;
+}
+
+div.advice-card {
+  grid-column: 3 / 10;
+  padding: 3rem;
+}
+
 div.user-choice button {
   border-top: 1px solid #00df7e;
   background: #24db8c;

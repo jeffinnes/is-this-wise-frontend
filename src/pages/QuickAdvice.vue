@@ -1,16 +1,19 @@
 <template>
-  <div class="intro-block">
-    <h1>Looking for some quick advice?</h1>
-    <h2>You are in the right spot!</h2>
-  </div>
+  <base-card class="intro-card">
+    <div class="intro-block">
+      <h1>Looking for some advice?</h1>
+    </div>
+  </base-card>
 
-  <div class="advice-container">
-    <span>{{ advice }}</span>
-  </div>
+  <base-card class="advice-card">
+    <div class="advice-container">
+      <span>{{ advice }}</span>
+    </div>
 
-  <div class="user-choice">
-    <button @click="getAdvice">More Please!</button>
-  </div>
+    <div class="user-choice">
+      <button @click="getAdvice">More Please!</button>
+    </div>
+  </base-card>
 </template>
 
 <script>
@@ -42,6 +45,16 @@ export default {
 </script>
 
 <style scoped>
+div.intro-card {
+  grid-column: 4 / 9;
+  text-align: center;
+}
+
+div.advice-card {
+  grid-column: 3 / 10;
+  padding: 3rem;
+}
+
 div.user-choice button {
   border-top: 1px solid #00df7e;
   background: #24db8c;

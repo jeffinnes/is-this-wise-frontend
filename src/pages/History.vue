@@ -54,10 +54,6 @@ export default {
 </script>
 
 <style scoped>
-  div.card {
-    background-color: rgba(45, 52, 54, 1);
-  }
-
   div.greeting {
     grid-column: 2 / 11;
   }
