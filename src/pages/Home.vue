@@ -13,8 +13,12 @@
   </base-card>
 
   <div class="user-choice">
-    <router-link to="/quick-advice"><span>I'm just here for some free advice.</span></router-link>
-    <router-link to="/rate-advice"><span>I want to help!</span></router-link>
+    <base-button link :to="'/quick-advice'">
+      I'm just here for some free advice.
+    </base-button>
+    <base-button link :to="'/rate-advice'">
+      I want to help!
+    </base-button>
   </div>
 </template>
 

@@ -147,7 +147,7 @@ div.user-choice {
   align-items: center;
 }
 
-div.user-choice a {
+/* div.user-choice a {
   border-top: 1px solid #00df7e;
   background: #24db8c;
   background: -webkit-gradient(
@@ -195,7 +195,7 @@ div.user-choice a:active {
 
 div.user-choice a span {
   text-align: center;
-}
+} */
 
 /* Quick advice rules */
 
