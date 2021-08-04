@@ -20,21 +20,49 @@
       I want to help!
     </base-button>
   </div>
+
+  <base-card class="rated-advice">
+    <aggregate-advice-item v-for="adviceObj in allRatings"
+    :key="adviceObj._id"
+    :adviceText="adviceObj.adviceText"
+    :goodRatings="adviceObj.timesRatedGood"
+    :badRatings="adviceObj.timesRatedBad"
+    ></aggregate-advice-item>
+  </base-card>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
+import AggregateAdviceItem from '../components/advice/AggregateAdviceItem.vue';
 
 export default {
   name: 'Home',
+  components: {
+    AggregateAdviceItem,
+  },
   data() {
     return {
       userFullName: null,
+      isLoading: false,
     };
   },
-  components: {
-
+  methods: {
+    async fetchAllRatings() {
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch('fetchAllRatings');
+      } catch (error) {
+        console.log(error.message);
+      }
+      this.isLoading = false;
+    },
+  },
+  computed: {
+    allRatings() {
+      return this.$store.getters.allRatings;
+    },
+  },
+  created() {
+    this.fetchAllRatings();
   },
   mounted() {
     this.userFullName = this.$store.getters.userFullName;
@@ -78,4 +106,5 @@ export default {
   div.intro-block {
     background-color: rgba(45, 52, 54, 1);
   }
+
 </style>

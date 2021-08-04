@@ -15,6 +15,7 @@ export default {
       return state.userRatingHistory.length > 0;
     },
     allRatings(state) {
+      console.log(state.allRatings);
       return state.allRatings;
     },
   },
@@ -36,8 +37,12 @@ export default {
         context.commit('setUserRatings', response.body.ratingHistory);
       }
     },
-    async fetchAllRatings() {
-      // Get all the ratings
+    async fetchAllRatings(context) {
+      const response = await superagent.get(`${process.env.VUE_APP_BACKEND_BASE}/api/v1/all-ratings`);
+      console.log(response.body);
+      if (response.body) {
+        context.commit('setAllRatings', response.body);
+      }
     },
   },
 };
