@@ -43,6 +43,25 @@ export default {
 </script>
 
 <style scoped>
+  div.intro-block {
+    grid-column: 3 / 11;
+    font-size: 1.6rem;
+  }
+
+  div.user-choice {
+    grid-column: 3 / 11;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  div.rated-advice {
+    grid-column: 3 / 11;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
   p {
     text-align: center;
   }

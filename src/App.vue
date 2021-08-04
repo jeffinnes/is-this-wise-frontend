@@ -132,21 +132,7 @@ main.content-box {
   padding: 2rem 0;
 }
 
-/* Home page */
-
-div.intro-block {
-  grid-column: 3 / 10;
-  font-size: 1.6rem;
-  margin: 0 auto 0 auto;
-}
-
-div.user-choice {
-  grid-column: 3 / 10;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
+/* ToDo move this to appropriate component */
 /* Quick advice rules */
 
 div.advice-container {
