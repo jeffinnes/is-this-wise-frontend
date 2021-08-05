@@ -39,7 +39,6 @@ export default {
     },
     async fetchAllRatings(context) {
       const response = await superagent.get(`${process.env.VUE_APP_BACKEND_BASE}/api/v1/all-ratings`);
-      console.log(response.body);
       if (response.body) {
         context.commit('setAllRatings', response.body);
       }
