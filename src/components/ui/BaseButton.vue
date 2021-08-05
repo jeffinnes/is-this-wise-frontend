@@ -37,7 +37,7 @@ a {
   padding: 0.75rem 1.5rem;
   font: inherit;
   background-color: rgb(175, 73, 72);
-  border: none;
+  border: .3rem solid rgba(45, 52, 54, 1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   color: white;
   cursor: pointer;
