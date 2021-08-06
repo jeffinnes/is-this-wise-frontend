@@ -43,7 +43,7 @@ a {
   cursor: pointer;
   border-radius: 30px;
   margin-right: 0.5rem;
-  font-family: "Literata", serif;
+  font-family: 'Roboto Slab', serif;
   font-size: 1.5rem;
   width: 15rem;
   height: 5rem;
