@@ -15,8 +15,8 @@
       <base-button v-if="canRequest" @click="submitRating('good')">This is Good</base-button>
       <base-button v-if="canRequest" @click="getAdvice">¯\_(ツ)_/¯</base-button>
       <base-button v-if="canRequest" @click="submitRating('bad')">This is Bad</base-button>
-      <p v-if="!canRequest">
-       Waiting for the API rate limit cooldown... (Wouldn't an animation be better?)
+      <p class="cooldown" v-if="!canRequest">
+        Waiting for the API rate limit cooldown... (Wouldn't an animation be better?)
       </p>
     </div>
   </base-card>
@@ -92,8 +92,30 @@ div.intro-card {
   grid-column: 4 / 9;
 }
 
+div.advice-container {
+  height: 20rem;
+  background-color: rgba(240, 248, 255, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 3 / 10;
+  font-size: 2.7rem;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 div.advice-card {
   grid-column: 3 / 10;
   padding: 3rem;
+}
+
+div.user-choice {
+  display: flex;
+  justify-content: space-around;
+}
+
+p.cooldown {
+  height: 5rem;
 }
 </style>

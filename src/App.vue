@@ -135,19 +135,6 @@ main.content-box {
 /* ToDo move this to appropriate component */
 /* Quick advice rules */
 
-div.advice-container {
-  height: 20rem;
-  background-color: rgba(240, 248, 255, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-column: 3 / 10;
-  font-size: 2.7rem;
-  text-align: center;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-}
-
 /* Responsive Rules */
 
 @media screen and (max-width: 1200px) {
