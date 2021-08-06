@@ -2,8 +2,8 @@
   <div class="agg-advice-item">
     <p class="advice-text">{{ adviceText }}</p>
     <div class="agg-bar-row">
-      <div class="agg-bar">
-        <div class="good-bar" :style="goodBarShift"></div>
+      <div class="agg-bar" :style="goodBarShift">
+
       </div>
     </div>
     <div class="labels">
@@ -32,8 +32,13 @@ export default {
       return Math.round((num + Number.EPSILON) * 100);
     },
     goodBarShift() {
+      // These
+      const colorStopGood = this.goodPercent - 1;
+      const colorStopMid = this.goodPercent;
+      const colorStopBad = this.goodPercent + 1;
+
       return {
-        transform: `translate(-${100 - this.goodPercent}%)`,
+        background: `linear-gradient(90deg, rgba(26,102,26,1) 0%, rgba(26,102,26,0.85) ${colorStopGood}%, rgba(255,255,255,0) ${colorStopMid}%, rgba(178,34,34,0.85) ${colorStopBad}%, rgba(178,34,34,1) 100%)`,
       };
     },
   },
@@ -43,6 +48,7 @@ export default {
 <style scoped>
   div.agg-advice-item {
     font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
     width: 20rem;
     min-height: 20rem;
     margin: 1rem;
@@ -58,6 +64,7 @@ export default {
 
   p.advice-text {
     font-size: 1.6rem;
+    line-height: 2rem;
     text-align: center;
     padding: 0.9rem;
     grid-column: 1 / 13;
@@ -70,7 +77,6 @@ export default {
 
   div.agg-bar {
     border: .2rem solid rgba(45, 52, 54, 1);
-    background-color: rgb(178, 34, 34);
     height: 25%;
     width: 100%;
     margin: auto;
