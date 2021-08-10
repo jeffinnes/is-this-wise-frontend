@@ -35,8 +35,11 @@ export default {
       return this.$store.getters.isAuthenticated;
     },
   },
-  created() {
-    // this.checkAuth();
+  methods: {
+    async logout() {
+      await this.$store.dispatch('logout');
+      this.$router.replace('/');
+    },
   },
 };
 </script>
