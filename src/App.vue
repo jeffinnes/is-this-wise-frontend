@@ -4,8 +4,9 @@
   </header>
 
   <nav>
-    <router-link to="/history" class="nav-link">My History</router-link>
-    <router-link to="/login" class="nav-link">Login</router-link>
+    <router-link v-if="isLoggedIn" to="/history" class="nav-link">My History</router-link>
+    <div v-if="isLoggedIn" class="nav-link" @click="logout">Logout</div>
+    <router-link v-else to="/login" class="nav-link">Login</router-link>
   </nav>
 
   <main class="content-box">
@@ -15,23 +16,8 @@
 
 <script>
 export default {
-  data() {
-    return {
-      ready: false,
-    };
-  },
-  methods: {
-    /* async checkAuth() {
-      console.log('app.vue check auth');
-      await this.$store.dispatch('authCheck');
-      console.log('app.vue check auth complete');
-      this.ready = true;
-    }, */
-  },
-  calculated: {
-    authenticated() {
-      // ToDo I think I was going to use this to control the nav contents
-      // but it doesn't work
+  computed: {
+    isLoggedIn() {
       return this.$store.getters.isAuthenticated;
     },
   },
@@ -112,7 +98,8 @@ nav {
   justify-content: flex-end;
 }
 
-a.nav-link {
+a.nav-link,
+div.nav-link {
   color: rgba(234, 246, 229, 1);
   height: 100%;
   width: 20%;
@@ -122,7 +109,8 @@ a.nav-link {
   transition: background-color 500ms ease-in-out, color 300ms ease-in-out;
 }
 
-a.nav-link:hover {
+a.nav-link:hover,
+div.nav-link:hover {
   color: rgb(45, 52, 54);
   background-color: rgb(255, 115, 91);
 }

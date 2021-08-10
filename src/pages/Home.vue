@@ -41,7 +41,6 @@ export default {
   },
   data() {
     return {
-      userFullName: null,
       isLoading: false,
     };
   },
@@ -60,12 +59,12 @@ export default {
     allRatings() {
       return this.$store.getters.allRatings;
     },
+    userFullName() {
+      return this.$store.getters.userFullName;
+    },
   },
   created() {
     this.fetchAllRatings();
-  },
-  mounted() {
-    this.userFullName = this.$store.getters.userFullName;
   },
 };
 </script>
