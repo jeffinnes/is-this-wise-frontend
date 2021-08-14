@@ -34,6 +34,12 @@ export default {
     color: white;
   }
 
+  a.google {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0.2rem 0.8rem rgba(24, 119, 242, 0.3);
+    color: rgba(0, 0, 0, 0.54);
+  }
+
   a img {
     height: 100%;
     width: auto;

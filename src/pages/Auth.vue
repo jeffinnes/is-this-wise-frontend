@@ -9,6 +9,13 @@
         text="Log in with GitHub"
       ></login-button>
       <login-button
+        :href="baseURL + '/auth/google'"
+        provider="google"
+        :iconSrc="googleLogo"
+        iconAlt="Google Logo"
+        text="Log in with Google"
+      ></login-button>
+      <login-button
         :href="baseURL + '/auth/facebook'"
         provider="facebook"
         :iconSrc="facebookLogo"
@@ -21,8 +28,9 @@
 
 <script>
 import LoginButton from '../components/ui/LoginButton.vue';
-import githubLogo from '../assets/oauth-logos/github/GitHub-Mark-120px-plus.png';
-import facebookLogo from '../assets/oauth-logos/facebook/f_logo_RGB-Blue_58.png';
+import githubLogo from '../assets/oauth-logos/github/GitHub-Mark.png';
+import facebookLogo from '../assets/oauth-logos/facebook/fb_logo.svg';
+import googleLogo from '../assets/oauth-logos/google/google_light_normal.svg';
 
 export default {
   components: {
@@ -33,6 +41,7 @@ export default {
       baseURL: process.env.VUE_APP_BACKEND_BASE,
       githubLogo,
       facebookLogo,
+      googleLogo,
     };
   },
 };
