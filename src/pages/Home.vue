@@ -2,22 +2,25 @@
   <base-card class="intro-block">
     <h1 v-if="userFullName">Welcome back {{ userFullName }}!</h1>
     <p class="intro-text">
-      Human history has produced a plethora of wisdom nuggets, but how much of
+      Human history has produced a plethora of advice, but how much of
       it is actually any good?
     </p>
     <p class="intro-text">
       "Is this wise?" is an attempt to crowdsource the answer to that question.
     </p>
     <p class="call-to-action">Check out what others think of the advice below.
-      When you're ready to lend a hand, create an account and start rating!</p>
+      When you're ready to lend a hand, create an account or login and start rating!</p>
   </base-card>
 
   <div class="user-choice">
     <base-button link :to="'/quick-advice'">
       I'm just here for some free advice.
     </base-button>
-    <base-button link :to="'/rate-advice'">
-      I want to help!
+    <base-button v-if="isLoggedIn" link :to="'/rate-advice'">
+      I'm ready to help!
+    </base-button>
+    <base-button v-else link :to="'/login'">
+      Login to start rating!
     </base-button>
   </div>
 
@@ -62,6 +65,9 @@ export default {
     userFullName() {
       return this.$store.getters.userFullName;
     },
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
   },
   created() {
     this.fetchAllRatings();
@@ -73,6 +79,7 @@ export default {
   div.intro-block {
     grid-column: 3 / 11;
     font-size: 1.6rem;
+    padding: 2rem;
   }
 
   div.user-choice {
@@ -89,10 +96,6 @@ export default {
     justify-content: space-around;
   }
 
-  p {
-    text-align: center;
-  }
-
   p.intro-text {
     font-size: 2.5rem;
     margin-top: 1rem;
@@ -100,6 +103,7 @@ export default {
 
   p.call-to-action{
     margin-top: 1.3rem;
+    text-align: center;
   }
 
   div.intro-block {
