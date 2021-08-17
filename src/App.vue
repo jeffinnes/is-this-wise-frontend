@@ -119,12 +119,10 @@ main.content-box {
   grid-column: span 12;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: max-content;
   color: rgba(234, 246, 229, 1);
   padding: 2rem 0;
 }
-
-/* ToDo move this to appropriate component */
-/* Quick advice rules */
 
 /* Responsive Rules */
 

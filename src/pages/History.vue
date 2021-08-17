@@ -11,7 +11,7 @@
       :rating="advice.rating">
       </advice-item>
     </div>
-    <p v-else>No rating history yet...</p>
+    <h2 v-else>No rating history yet...</h2>
   </base-card>
 </template>
 
@@ -58,7 +58,9 @@ export default {
     grid-column: 2 / 11;
   }
 
-  div.greeting h2 {
+  div.greeting h2,
+  div.hist-card h2 {
+    padding: .7rem;
     text-align: center;
   }
 

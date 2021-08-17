@@ -95,9 +95,14 @@ export default {
     justify-content: space-between;
   }
 
+  div.labels p {
+    font-weight: 700;
+  }
+
   div.total {
     grid-column: 2 / 12;
     display: flex;
     justify-content: center;
+    font-weight: 700;
   }
 </style>
