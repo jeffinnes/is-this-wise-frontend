@@ -1,6 +1,7 @@
 <template>
   <div class="login-container">
     <base-card class="login-card">
+      <h2 class="login-cta">Login In</h2>
       <login-button
         :href="baseURL + '/auth/github'"
         provider="github"
@@ -50,5 +51,10 @@ export default {
 <style scoped>
   div.login-container {
     grid-column: 5 / 9;
+  }
+
+  h2.login-cta {
+    text-align: center;
+    margin: 1rem 0 2.5rem 0;
   }
 </style>
