@@ -1,6 +1,7 @@
 <template>
   <base-card class="greeting">
-    <h2>Take a trip down memory lane and review your past ratings!</h2>
+    <h2>Take a trip down memory lane with a review of your past ratings!</h2>
+    <p>You are wiser now... do you still agree with your past self?</p>
   </base-card>
   <base-card class="hist-card">
     <p v-if="isLoading">Loading...</p>
@@ -55,12 +56,17 @@ export default {
 
 <style scoped>
   div.greeting {
-    grid-column: 2 / 11;
+    grid-column: 3 / 10;
   }
 
   div.greeting h2,
   div.hist-card h2 {
     padding: .7rem;
+    text-align: center;
+  }
+
+  div.greeting p {
+    font-size: 2rem;
     text-align: center;
   }
 
