@@ -106,6 +106,7 @@ div.nav-link {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   transition: background-color 500ms ease-in-out, color 300ms ease-in-out;
 }
 
