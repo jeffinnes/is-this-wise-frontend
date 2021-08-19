@@ -4,6 +4,7 @@
   </header>
 
   <nav>
+    <router-link v-if="isLoggedIn" to="/rate-advice" class="nav-link">Rate Adivice</router-link>
     <router-link v-if="isLoggedIn" to="/history" class="nav-link">My History</router-link>
     <div v-if="isLoggedIn" class="nav-link" @click="logout">Logout</div>
     <router-link v-else to="/login" class="nav-link">Login</router-link>
