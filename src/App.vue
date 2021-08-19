@@ -102,7 +102,7 @@ a.nav-link,
 div.nav-link {
   color: rgba(234, 246, 229, 1);
   height: 100%;
-  width: 20%;
+  padding: 0 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,13 +148,6 @@ main.content-box {
 }
 
 @media screen and (max-width: 620px) {
-  input {
-    font-size: 2rem;
-  }
-
-  div.breadcrumb span#page-title {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 450px) {
