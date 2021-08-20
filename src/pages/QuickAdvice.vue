@@ -7,14 +7,15 @@
 
   <base-card class="advice-card">
     <div class="advice-container">
-      <span>{{ advice }}</span>
+      <base-ripple v-if="!canRequest"></base-ripple>
+      <span v-else>{{ advice }}</span>
     </div>
 
     <div class="user-choice">
       <base-button v-if="canRequest" @click="getAdvice">More Please!</base-button>
-      <p class="cooldown" v-if="!canRequest">
-        Waiting for the API rate limit cooldown... (Wouldn't an animation be better?)
-      </p>
+      <div v-if="!canRequest">
+        <p class="cooldown">Receiving wisdom from the ancients</p>
+      </div>
     </div>
   </base-card>
 </template>
@@ -87,6 +88,7 @@ div.user-choice {
 }
 
 p.cooldown {
-  height: 5rem;
-}
+    height: 5rem;
+    font-size: 2rem;
+  }
 </style>

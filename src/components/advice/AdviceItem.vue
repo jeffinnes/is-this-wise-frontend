@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <base-spinner v-if="isLoading"></base-spinner>
+    <base-ripple v-if="isLoading"></base-ripple>
     <div v-else-if="!isLoading && adviceText">
       <p class="advice-text">"{{ adviceText }}"</p>
       <p>You though this was <span :class="rating">{{ rating }}</span> advice.</p>
