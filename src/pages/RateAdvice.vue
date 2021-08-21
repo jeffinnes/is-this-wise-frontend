@@ -93,7 +93,7 @@ export default {
   }
 
   div.intro-card {
-    grid-column: 4 / 9;
+    grid-column: 4 / 10;
   }
 
   div.advice-container {
@@ -102,7 +102,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-column: 3 / 10;
+    grid-column: 3 / 11;
     font-size: 2.7rem;
     text-align: center;
     padding: 1rem;
@@ -110,7 +110,7 @@ export default {
   }
 
   div.advice-card {
-    grid-column: 3 / 10;
+    grid-column: 3 / 11;
     padding: 3rem;
   }
 

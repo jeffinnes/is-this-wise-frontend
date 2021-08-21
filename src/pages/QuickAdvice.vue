@@ -60,7 +60,7 @@ export default {
 
 <style scoped>
 div.intro-card {
-  grid-column: 4 / 9;
+  grid-column: 4 / 10;
   text-align: center;
 }
 
@@ -70,7 +70,7 @@ div.advice-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-column: 3 / 10;
+  grid-column: 3 / 11;
   font-size: 2.7rem;
   text-align: center;
   padding: 1rem;
@@ -78,7 +78,7 @@ div.advice-container {
 }
 
 div.advice-card {
-  grid-column: 3 / 10;
+  grid-column: 3 / 11;
   padding: 3rem;
 }
 

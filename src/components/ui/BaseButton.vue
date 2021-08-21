@@ -42,7 +42,7 @@ a {
   color: white;
   cursor: pointer;
   border-radius: 30px;
-  margin-right: 0.5rem;
+  margin: 0 0.5rem;
   font-family: 'Roboto Slab', serif;
   font-size: 1.5rem;
   width: 15rem;

@@ -141,17 +141,28 @@ main.content-box {
 
   nav {
     grid-column: span 8;
-    justify-content: space-around;
-  }
-
-  a.nav-link {
-    width: 100%;
   }
 }
 
 @media screen and (max-width: 620px) {
+  header {
+    grid-column: span 12;
+    justify-content: center;
+  }
+
+  nav {
+    grid-column: span 12;
+    justify-content: space-between;
+  }
 }
 
 @media screen and (max-width: 450px) {
+  nav a.nav-link,
+  div.nav-link {
+    text-align: center;
+    width: 33%;
+    padding: 0;
+    border: wheat 1px solid
+  }
 }
 </style>

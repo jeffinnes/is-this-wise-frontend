@@ -56,7 +56,7 @@ export default {
 
 <style scoped>
   div.greeting {
-    grid-column: 3 / 10;
+    grid-column: 3 / 11;
   }
 
   div.greeting h2,
@@ -71,7 +71,7 @@ export default {
   }
 
   div.hist-card {
-    grid-column: 2 / 11;
+    grid-column: 2 / 12;
   }
 
   .history {

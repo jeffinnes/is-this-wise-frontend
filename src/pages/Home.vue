@@ -25,6 +25,7 @@
   </div>
 
   <base-card class="rated-advice">
+    <base-ripple v-if="isLoading"></base-ripple>
     <aggregate-advice-item v-for="adviceObj in allRatings"
     :key="adviceObj._id"
     :adviceText="adviceObj.adviceText"
@@ -78,7 +79,6 @@ export default {
 <style scoped>
   div.intro-block {
     grid-column: 3 / 11;
-    font-size: 1.6rem;
     padding: 2rem;
   }
 
@@ -110,4 +110,31 @@ export default {
     background-color: rgba(45, 52, 54, 1);
   }
 
+  @media screen and (max-width: 750px) {
+  div.rated-advice {
+    grid-column: 1 / 13;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p.intro-text {
+    font-size: 1.5rem;
+  }
+
+  p.call-to-action{
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  div.intro-block {
+    grid-column: 1 / 13;
+  }
+
+  div.user-choice {
+    grid-column: 1/13;
+  }
+}
 </style>
