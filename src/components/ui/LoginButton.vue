@@ -20,6 +20,7 @@ export default {
     align-items: center;
     margin: 1rem auto;
     padding: .5rem;
+    max-width: 250px;
   }
 
   a.github {

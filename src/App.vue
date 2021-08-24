@@ -145,6 +145,10 @@ main.content-box {
 }
 
 @media screen and (max-width: 620px) {
+  #app {
+    grid-template-rows: 4.5rem 4.5rem auto;
+  }
+
   header {
     grid-column: span 12;
     justify-content: center;

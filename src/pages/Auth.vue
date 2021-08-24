@@ -57,4 +57,22 @@ export default {
     text-align: center;
     margin: 1rem 0 2.5rem 0;
   }
+
+  @media screen and (max-width: 950px) {
+    div.login-container {
+      grid-column: 4 / 10;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    div.login-container {
+      grid-column: 2 / 12;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+  div.login-container {
+      grid-column: span 12;
+    }
+}
 </style>
