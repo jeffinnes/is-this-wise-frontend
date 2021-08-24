@@ -1,57 +1,84 @@
 <template>
-  <div class="ripple">
-    <div class="cooldown-ripple">
-      <div></div>
-      <div></div>
-    </div>
+  <div class="lds-grid">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </template>
 
 <style>
-/** This style is unscpoed as a work around for the bug that tags keyframe persentages
-with the scope tag.
-See GitHub issue https://github.com/vuejs/vue-next/issues/3304
-ToDo: Fix this when the bug is addressed. */
-.ripple {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.cooldown-ripple {
-  display: inline-block;
-  position: relative;
-  width: 120px;
-  height: 120px;
-}
-
-.cooldown-ripple div {
-  position: absolute;
-  border: 4px solid #614b7c;
-  opacity: 1;
-  border-radius: 50%;
-  animation: cooldown-ripple 2s cubic-bezier(0.92, 0.12, 0.67, 0.99) infinite;
-}
-
-.cooldown-ripple div:nth-child(2) {
-  animation-delay: -0.5s;
-}
-
-@keyframes cooldown-ripple {
-  0% {
-    top: 60px;
-    left: 60px;
-    width: 0;
-    height: 0;
-    opacity: 1;
+  .lds-grid {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
   }
-  100% {
-    top: 0px;
-    left: 0px;
-    width: 112px;
-    height: 112px;
-    opacity: 0;
+  .lds-grid div {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #614b7c;
+    animation: lds-grid 1.2s linear infinite;
   }
-}
+  .lds-grid div:nth-child(1) {
+    top: 8px;
+    left: 8px;
+    animation-delay: 0s;
+  }
+  .lds-grid div:nth-child(2) {
+    top: 8px;
+    left: 32px;
+    animation-delay: -0.4s;
+  }
+  .lds-grid div:nth-child(3) {
+    top: 8px;
+    left: 56px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(4) {
+    top: 32px;
+    left: 8px;
+    animation-delay: -0.4s;
+  }
+  .lds-grid div:nth-child(5) {
+    top: 32px;
+    left: 32px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(6) {
+    top: 32px;
+    left: 56px;
+    animation-delay: -1.2s;
+  }
+  .lds-grid div:nth-child(7) {
+    top: 56px;
+    left: 8px;
+    animation-delay: -0.8s;
+  }
+  .lds-grid div:nth-child(8) {
+    top: 56px;
+    left: 32px;
+    animation-delay: -1.2s;
+  }
+  .lds-grid div:nth-child(9) {
+    top: 56px;
+    left: 56px;
+    animation-delay: -1.6s;
+  }
+  @keyframes lds-grid {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
 </style>
