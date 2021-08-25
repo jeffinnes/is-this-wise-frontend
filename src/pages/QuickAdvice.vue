@@ -1,8 +1,6 @@
 <template>
-  <base-card class="intro-card">
-    <div class="intro-block">
-      <h1>Looking for some advice?</h1>
-    </div>
+  <base-card class="intro-block">
+    <h1>Looking for some advice?</h1>
   </base-card>
 
   <base-card class="advice-card">
@@ -12,7 +10,9 @@
     </div>
 
     <div class="user-choice">
-      <base-button v-if="canRequest" @click="getAdvice">More Please!</base-button>
+      <base-button v-if="canRequest" @click="getAdvice"
+        >More Please!</base-button
+      >
       <div v-if="!canRequest">
         <p class="cooldown">Receiving wisdom from the ancients</p>
       </div>
@@ -59,36 +59,56 @@ export default {
 </script>
 
 <style scoped>
-div.intro-card {
-  grid-column: 4 / 10;
-  text-align: center;
-}
+  div.intro-block {
+    grid-column: 4 / 10;
+    text-align: center;
+  }
 
-div.advice-container {
-  height: 20rem;
-  background-color: rgba(240, 248, 255, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-column: 3 / 11;
-  font-size: 2.7rem;
-  text-align: center;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-}
+  div.advice-container {
+    height: 20rem;
+    background-color: rgba(240, 248, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 3 / 11;
+    font-size: 2.7rem;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
 
-div.advice-card {
-  grid-column: 3 / 11;
-  padding: 3rem;
-}
+  div.advice-card {
+    grid-column: 3 / 11;
+    padding: 3rem;
+  }
 
-div.user-choice {
-  display: flex;
-  justify-content: space-around;
-}
+  div.user-choice {
+    display: flex;
+    justify-content: space-around;
+  }
 
-p.cooldown {
+  p.cooldown {
     height: 5rem;
     font-size: 2rem;
+  }
+
+  @media screen and (max-width: 750px) {
+    div.intro-block {
+      grid-column: 2 / 12;
+    }
+
+    div.advice-card {
+      grid-column: span 12;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    div.intro-block {
+      grid-column: span 12;
+    }
+
+    p.cooldown {
+      font-size: 1.6rem;
+    }
   }
 </style>
