@@ -1,9 +1,7 @@
 <template>
-  <base-card class="intro-card">
-    <div class="intro-block">
-      <h2 v-if="userFullName">Hello {{ userFullName }}</h2>
-      <h3>What do you think about this advice?</h3>
-    </div>
+  <base-card class="intro-block">
+    <h2 v-if="userFullName">Hello {{ userFullName }}</h2>
+    <h3>What do you think about this advice?</h3>
   </base-card>
 
   <base-card class="advice-card">
@@ -13,9 +11,18 @@
     </div>
 
     <div class="user-choice">
-      <base-button v-if="canRequest" @click="submitRating('good')">This is Good</base-button>
-      <base-button v-if="canRequest" @click="getAdvice">¯\_(ツ)_/¯</base-button>
-      <base-button v-if="canRequest" @click="submitRating('bad')">This is Bad</base-button>
+      <base-button v-if="canRequest" @click="submitRating('good')">
+        <span class="long-btn-text">This is Good</span>
+        <span class="short-btn-text">Good</span>
+      </base-button>
+      <base-button v-if="canRequest" @click="getAdvice">
+        <span class="long-btn-text">¯\_(ツ)_/¯</span>
+        <span class="short-btn-text">Not Sure</span>
+      </base-button>
+      <base-button v-if="canRequest" @click="submitRating('bad')">
+        <span class="long-btn-text">This is Bad</span>
+        <span class="short-btn-text">Bad</span>
+      </base-button>
       <div v-if="!canRequest">
         <p class="cooldown">Receiving wisdom from the ancients</p>
       </div>
@@ -88,12 +95,12 @@ export default {
 </script>
 
 <style scoped>
-  div.intro-block h2 {
-    margin-bottom: 1rem;
+  div.intro-block {
+    grid-column: 4 / 10;
   }
 
-  div.intro-card {
-    grid-column: 4 / 10;
+  div.intro-block h2 {
+    margin-bottom: 1rem;
   }
 
   div.advice-container {
@@ -119,8 +126,44 @@ export default {
     justify-content: space-around;
   }
 
+  span.long-btn-text{
+    display: block;
+  }
+
+  span.short-btn-text{
+    display: none;
+  }
+
   p.cooldown {
     height: 5rem;
     font-size: 2rem;
+  }
+
+  @media screen and (max-width: 750px) {
+    span.long-btn-text{
+      display: none;
+    }
+
+    span.short-btn-text{
+      display: block;
+    }
+
+    div.intro-block {
+      grid-column: 2 / 12;
+    }
+
+    div.advice-card {
+      grid-column: span 12;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    div.intro-block {
+      grid-column: span 12;
+    }
+
+    p.cooldown {
+      font-size: 1.6rem;
+    }
   }
 </style>
