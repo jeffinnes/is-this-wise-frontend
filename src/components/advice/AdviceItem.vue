@@ -35,27 +35,37 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  background-color: blanchedalmond;
-  color: black;
-  font-size: 2rem;
-  margin: 1rem .5rem;
-  border: dimgray 1px solid;
-  padding: .5rem;
-  width: 95%;
-}
+  .main {
+    background-color: blanchedalmond;
+    color: black;
+    font-size: 2rem;
+    margin: 1rem .5rem;
+    border: dimgray 1px solid;
+    padding: .5rem;
+    width: 95%;
+  }
 
-.advice-text {
-  font-weight: bold;
-}
+  .advice-text {
+    font-weight: bold;
+  }
 
-.good {
-  font-weight: bold;
-  color: green;
-}
+  .good {
+    font-weight: bold;
+    color: green;
+  }
 
-.bad {
-  font-weight: bold;
-  color: crimson;
-}
+  .bad {
+    font-weight: bold;
+    color: crimson;
+  }
+
+  @media screen and (max-width: 450px) {
+    .advice-text {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.8rem;
+    }
+  }
 </style>

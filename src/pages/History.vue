@@ -4,7 +4,7 @@
     <p>You are wiser now... do you still agree with your past self?</p>
   </base-card>
   <base-card class="hist-card">
-    <p v-if="isLoading">Loading...</p>
+    <base-ripple v-if="isLoading"></base-ripple>
     <div class="history" v-else-if="!isLoading && hasHistory">
       <advice-item v-for="advice in userRatingHistory"
       :key="advice._id"
@@ -79,5 +79,21 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+  }
+
+  @media screen and (max-width: 750px) {
+    div.greeting {
+      grid-column: 2 / 12;
+    }
+
+    div.hist-card {
+      grid-column: span 12;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    div.greeting {
+      grid-column: span 12;
+    }
   }
 </style>
