@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="advice-item">
     <base-ripple v-if="isLoading"></base-ripple>
     <div v-else-if="!isLoading && adviceText">
       <p class="advice-text">"{{ adviceText }}"</p>
@@ -35,18 +35,21 @@ export default {
 </script>
 
 <style scoped>
-  .main {
-    background-color: blanchedalmond;
-    color: black;
-    font-size: 2rem;
-    margin: 1rem .5rem;
-    border: dimgray 1px solid;
-    padding: .5rem;
-    width: 95%;
+  .advice-item {
+    background-color: rgba(236, 194, 133, 1);
+    color: rgba(45, 52, 54, 1);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    grid-column: span 4;
   }
 
   .advice-text {
     font-weight: bold;
+    margin-bottom: 1rem;
   }
 
   .good {
@@ -59,9 +62,15 @@ export default {
     color: crimson;
   }
 
+  @media screen and (max-width: 750px) {
+    .advice-item {
+      grid-column: span 6;
+    }
+  }
+
   @media screen and (max-width: 450px) {
-    .advice-text {
-      margin-bottom: 1rem;
+    .advice-item {
+      grid-column: 2 / 12;
     }
 
     p {

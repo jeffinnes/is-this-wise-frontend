@@ -3,6 +3,7 @@
     <h2>Take a trip down memory lane with a review of your past ratings!</h2>
     <p>You are wiser now... do you still agree with your past self?</p>
   </base-card>
+
   <base-card class="hist-card">
     <base-ripple v-if="isLoading"></base-ripple>
     <div class="history" v-else-if="!isLoading && hasHistory">
@@ -76,9 +77,9 @@ export default {
 
   .history {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 1fr;
   }
 
   @media screen and (max-width: 750px) {

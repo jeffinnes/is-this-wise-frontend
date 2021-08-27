@@ -91,9 +91,9 @@ export default {
 
   div.rated-advice {
     grid-column: 3 / 11;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 1fr;
   }
 
   p.intro-text {
@@ -112,7 +112,7 @@ export default {
 
   @media screen and (max-width: 750px) {
   div.rated-advice {
-    grid-column: 1 / 13;
+    grid-column: 2 / 12;
   }
 
   h1 {
@@ -129,12 +129,22 @@ export default {
 }
 
 @media screen and (max-width: 620px) {
+  div.rated-advice {
+    grid-column: 3 / 11;
+  }
+
   div.intro-block {
     grid-column: 1 / 13;
   }
 
   div.user-choice {
     grid-column: 1/13;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  div.rated-advice {
+    grid-column: span 12;
   }
 }
 </style>

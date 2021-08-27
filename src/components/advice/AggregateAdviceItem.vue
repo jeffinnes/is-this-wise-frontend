@@ -49,17 +49,16 @@ export default {
   div.agg-advice-item {
     font-size: 1.3rem;
     font-family: 'Montserrat', sans-serif;
-    width: 20rem;
-    min-height: 20rem;
     margin: 1rem;
     background-color: rgba(236, 194, 133, 1);
     color: rgba(45, 52, 54, 1);
     padding: 1rem;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    grid-column: span 4;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 10rem 5rem 3rem 2rem;
+    grid-template-rows: auto 5rem 3rem 2rem;
   }
 
   p.advice-text {
@@ -104,5 +103,20 @@ export default {
     display: flex;
     justify-content: center;
     font-weight: 700;
+  }
+
+  @media screen and (max-width: 1200px) {
+    div.agg-advice-item {
+      grid-column: span 6;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    div.agg-advice-item {
+      grid-column: 2 / 12;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
   }
 </style>
