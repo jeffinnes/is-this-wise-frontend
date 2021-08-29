@@ -1,24 +1,9 @@
-# is-this-wise-frontend
+# Is This Wise?
 
-## Project setup
-```
-npm install
-```
+## About
+Human history has produced a plethora of wisdom nuggets, but how much of it is actually any good?
+_Is this wise?_ is an attempt to crowdsource the answer to that question.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Credits
+Advice provided by: [adviceslip.com](https://api.adviceslip.com/)
+Background image by: [pixletrue](https://www.pixeltrue.com/scenic-illustrations)
