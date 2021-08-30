@@ -63,14 +63,14 @@ export default {
   }
 
   @media screen and (max-width: 750px) {
-    .advice-item {
+    div.advice-item {
       grid-column: span 6;
     }
   }
 
   @media screen and (max-width: 450px) {
-    .advice-item {
-      grid-column: 2 / 12;
+    div.advice-item {
+      grid-column: span 12;
     }
 
     p {

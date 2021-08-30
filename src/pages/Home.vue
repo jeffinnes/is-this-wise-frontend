@@ -3,10 +3,8 @@
     <h1 v-if="userFullName">Welcome back {{ userFullName }}!</h1>
     <p class="intro-text">
       Human history has produced a plethora of advice, but how much of
-      it is actually any good?
-    </p>
-    <p class="intro-text">
-      "Is this wise?" is an attempt to crowdsource the answer to that question.
+      it is actually any good? "<span class="bold">Is this wise?</span>"
+      is an attempt to crowdsource the answer to that question.
     </p>
     <p class="call-to-action">Check out what others think of the advice below.
       When you're ready to lend a hand, create an account or login and start rating!</p>
@@ -54,6 +52,7 @@ export default {
       try {
         await this.$store.dispatch('fetchAllRatings');
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.log(error.message);
       }
       this.isLoading = false;
@@ -96,6 +95,10 @@ export default {
     grid-auto-rows: 1fr;
   }
 
+  span.bold {
+    font-weight: bold;
+  }
+
   p.intro-text {
     font-size: 2.5rem;
     margin-top: 1rem;
@@ -103,7 +106,7 @@ export default {
 
   p.call-to-action{
     margin-top: 1.3rem;
-    text-align: center;
+    font-size: 1.9rem;
   }
 
   div.intro-block {

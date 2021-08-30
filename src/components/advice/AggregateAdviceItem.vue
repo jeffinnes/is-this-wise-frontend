@@ -118,5 +118,12 @@ export default {
   }
 
   @media screen and (max-width: 450px) {
+    div.agg-advice-item {
+      grid-column: span 12;
+    }
+
+    p {
+      font-size: 1.8rem;
+    }
   }
 </style>
