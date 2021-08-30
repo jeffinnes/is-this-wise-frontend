@@ -7,3 +7,4 @@ _Is this wise?_ is an attempt to crowdsource the answer to that question.
 ## Acknowledgements
 Advice provided by: [adviceslip.com](https://api.adviceslip.com/)
 Background image by: [pixletrue](https://www.pixeltrue.com/scenic-illustrations)
+Favicon was created with: [LogoMakr.com](LogoMakr.com)
