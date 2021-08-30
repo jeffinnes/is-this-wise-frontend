@@ -1,22 +1,33 @@
 <template>
-  <div class="intro-block">
-    <h1 v-if="userFullName">Hello {{ userFullName }}</h1>
-    <h1>Ready to help rate some advice?</h1>
-    <h2>You are in the right spot!</h2>
-  </div>
+  <base-card class="intro-block">
+    <h2 v-if="userFullName">Hello {{ userFullName }}</h2>
+    <h3>What do you think about this advice?</h3>
+  </base-card>
 
-  <div class="advice-container">
-    <span>{{ advice }}</span>
-  </div>
+  <base-card class="advice-card">
+    <div class="advice-container">
+      <base-ripple v-if="!canRequest"></base-ripple>
+      <span v-else>{{ advice }}</span>
+    </div>
 
-  <div class="user-choice">
-    <button v-if="canRequest" @click="submitRating('good')">This is Good</button>
-    <button v-if="canRequest" @click="getAdvice">¯\_(ツ)_/¯</button>
-    <button v-if="canRequest" @click="submitRating('bad')">This is Bad</button>
-    <p v-if="!canRequest">
-      Waiting for the API rate limit cooldown... (Wouldn't an animation be better?)
-    </p>
-  </div>
+    <div class="user-choice">
+      <base-button v-if="canRequest" @click="submitRating('good')">
+        <span class="long-btn-text">This is Good</span>
+        <span class="short-btn-text">Good</span>
+      </base-button>
+      <base-button v-if="canRequest" @click="getAdvice">
+        <span class="long-btn-text">¯\_(ツ)_/¯</span>
+        <span class="short-btn-text">Not Sure</span>
+      </base-button>
+      <base-button v-if="canRequest" @click="submitRating('bad')">
+        <span class="long-btn-text">This is Bad</span>
+        <span class="short-btn-text">Bad</span>
+      </base-button>
+      <div v-if="!canRequest">
+        <p class="cooldown">Receiving wisdom from the ancients</p>
+      </div>
+    </div>
+  </base-card>
 </template>
 
 <script>
@@ -36,18 +47,21 @@ export default {
       // Disable the button preventing the user from requesting during the API rate limit cooldown
       this.canRequest = false;
 
-      superagent
-        .get('https://api.adviceslip.com/advice')
-        .then((adviceRes) => {
-          const adviceObj = JSON.parse(adviceRes.text);
-          this.advice = adviceObj.slip.advice;
-          this.adviceID = adviceObj.slip.id;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      setTimeout(() => {
+        superagent
+          .get('https://api.adviceslip.com/advice')
+          .then((adviceRes) => {
+            const adviceObj = JSON.parse(adviceRes.text);
+            this.advice = adviceObj.slip.advice;
+            this.adviceID = adviceObj.slip.id;
+            this.canRequest = true;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }, 9000);
 
-      this.requestDelay();
+      // this.requestDelay();
     },
     submitRating(rating) {
       superagent
@@ -56,6 +70,7 @@ export default {
         .set('Content-Type', 'application/json')
         .send({
           adviceID: this.adviceID,
+          adviceText: this.advice,
           submittedRating: rating,
         })
         .then((response) => {
@@ -80,53 +95,75 @@ export default {
 </script>
 
 <style scoped>
-div.user-choice button {
-  border-top: 1px solid #00df7e;
-  background: #24db8c;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#00b667),
-    to(#24db8c)
-  );
-  background: -webkit-linear-gradient(top, #00b667, #24db8c);
-  background: -moz-linear-gradient(top, #00b667, #24db8c);
-  background: -ms-linear-gradient(top, #00b667, #24db8c);
-  background: -o-linear-gradient(top, #00b667, #24db8c);
-  padding: 5px 10px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
-  color: #453645;
-  font-size: 14px;
-  font-family: "Literata", serif;
-  text-decoration: none;
-  vertical-align: middle;
-  font-size: 1.5rem;
-  width: 15rem;
-  height: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  div.intro-block {
+    grid-column: 4 / 10;
+  }
 
-div.user-choice button:hover {
-  border-top-color: #00703f;
-  background: #00703f;
-  color: #ccc;
-}
+  div.intro-block h2 {
+    margin-bottom: 1rem;
+  }
 
-div.user-choice button:active {
-  border-top-color: #014727;
-  background: #014727;
-}
+  div.advice-container {
+    height: 20rem;
+    background-color: rgba(240, 248, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 3 / 11;
+    font-size: 2.7rem;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
 
-div.user-choice button span {
-  text-align: center;
-}
+  div.advice-card {
+    grid-column: 3 / 11;
+    padding: 3rem;
+  }
+
+  div.user-choice {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  span.long-btn-text{
+    display: block;
+  }
+
+  span.short-btn-text{
+    display: none;
+  }
+
+  p.cooldown {
+    height: 5rem;
+    font-size: 2rem;
+  }
+
+  @media screen and (max-width: 750px) {
+    span.long-btn-text{
+      display: none;
+    }
+
+    span.short-btn-text{
+      display: block;
+    }
+
+    div.intro-block {
+      grid-column: 2 / 12;
+    }
+
+    div.advice-card {
+      grid-column: span 12;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    div.intro-block {
+      grid-column: span 12;
+    }
+
+    p.cooldown {
+      font-size: 1.6rem;
+    }
+  }
 </style>

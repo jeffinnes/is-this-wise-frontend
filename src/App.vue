@@ -4,8 +4,10 @@
   </header>
 
   <nav>
-    <router-link to="/profile" class="nav-link">Profile</router-link>
-    <router-link to="/login" class="nav-link">Login</router-link>
+    <router-link v-if="isLoggedIn" to="/rate-advice" class="nav-link">Rate Adivice</router-link>
+    <router-link v-if="isLoggedIn" to="/history" class="nav-link">My History</router-link>
+    <div v-if="isLoggedIn" class="nav-link" @click="logout">Logout</div>
+    <router-link v-else to="/login" class="nav-link">Login</router-link>
   </nav>
 
   <main class="content-box">
@@ -15,28 +17,16 @@
 
 <script>
 export default {
-  data() {
-    return {
-      ready: false,
-    };
-  },
-  methods: {
-    /* async checkAuth() {
-      console.log('app.vue check auth');
-      await this.$store.dispatch('authCheck');
-      console.log('app.vue check auth complete');
-      this.ready = true;
-    }, */
-  },
-  calculated: {
-    authenticated() {
-      // ToDo I think I was going to use this to control the nav contents
-      // but it doesn't work
+  computed: {
+    isLoggedIn() {
       return this.$store.getters.isAuthenticated;
     },
   },
-  created() {
-    // this.checkAuth();
+  methods: {
+    async logout() {
+      await this.$store.dispatch('logout');
+      this.$router.replace('/');
+    },
   },
 };
 </script>
@@ -44,39 +34,53 @@ export default {
 <style>
 /*Font Key
 For headers
-font-family: "GeosansLight-NMS", sans-serif;
+font-family: 'Roboto Slab', serif;
 
 For most other body stuff
 font-family: 'Raleway', sans-serif;
-font-family: 'Literata', serif;
+font-family: 'Montserrat', sans-serif;
 */
+html {
+  height: 100%;
+  font-size: 10px;
+  background-image: url('./assets/background/HillsandMountains-sunset.png');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body {
+  /* background-color: rgb(2, 60, 104); */
+  font-family: 'Raleway', sans-serif;
+  height: 100%;
+}
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(2, 60, 104);
-  font-family: "Raleway", sans-serif;
+  /* background-color: rgb(2, 60, 104); */
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 4.5rem auto;
+  height: 100%;
 }
 
 h1 {
   font-size: 4rem;
   font-weight: bold;
-  font-family: "GeosansLight-NMS", sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 h2 {
   font-size: 3rem;
   font-weight: bold;
-  font-family: "GeosansLight-NMS", sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 h3 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
-  font-family: "GeosansLight-NMS", sans-serif;
+  font-family: 'Roboto Slab', serif;
 }
 
 header,
@@ -84,8 +88,8 @@ nav {
   grid-column: span 6;
   height: 4.5rem;
   background-color: rgba(45, 52, 54, 1);
-  font-family: "GeosansLight-NMS", sans-serif;
-  font-size: 2.5rem;
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
   color: rgba(234, 246, 229, 1);
   display: flex;
   align-items: center;
@@ -95,107 +99,31 @@ nav {
   justify-content: flex-end;
 }
 
-a.nav-link {
+a.nav-link,
+div.nav-link {
   color: rgba(234, 246, 229, 1);
   height: 100%;
-  width: 20%;
+  padding: 0 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   transition: background-color 500ms ease-in-out, color 300ms ease-in-out;
 }
 
-a.nav-link:hover {
+a.nav-link:hover,
+div.nav-link:hover {
   color: rgb(45, 52, 54);
-  background-color: rgb(80, 163, 227);
+  background-color: rgb(255, 115, 91);
 }
 
 main.content-box {
   grid-column: span 12;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: max-content;
   color: rgba(234, 246, 229, 1);
   padding: 2rem 0;
-}
-
-/* Home page */
-
-div.intro-block {
-  grid-column: 3 / 10;
-  font-size: 1.6rem;
-  margin: 0 auto 3rem auto;
-}
-
-div.user-choice {
-  grid-column: 3 / 10;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-div.user-choice a {
-  border-top: 1px solid #00df7e;
-  background: #24db8c;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#00b667),
-    to(#24db8c)
-  );
-  background: -webkit-linear-gradient(top, #00b667, #24db8c);
-  background: -moz-linear-gradient(top, #00b667, #24db8c);
-  background: -ms-linear-gradient(top, #00b667, #24db8c);
-  background: -o-linear-gradient(top, #00b667, #24db8c);
-  padding: 5px 10px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
-  color: #453645;
-  font-size: 14px;
-  font-family: "Literata", serif;
-  text-decoration: none;
-  vertical-align: middle;
-  font-size: 1.5rem;
-  width: 15rem;
-  height: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-div.user-choice a:hover {
-  border-top-color: #00703f;
-  background: #00703f;
-  color: #ccc;
-}
-
-div.user-choice a:active {
-  border-top-color: #014727;
-  background: #014727;
-}
-
-div.user-choice a span {
-  text-align: center;
-}
-
-/* Quick advice rules */
-
-div.advice-container {
-  height: 20rem;
-  background-color: rgba(240, 248, 255, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-column: 3 / 10;
-  font-size: 2.7rem;
-  text-align: center;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
 }
 
 /* Responsive Rules */
@@ -213,24 +141,32 @@ div.advice-container {
 
   nav {
     grid-column: span 8;
-    justify-content: space-around;
-  }
-
-  a.nav-link {
-    width: 100%;
   }
 }
 
 @media screen and (max-width: 620px) {
-  input {
-    font-size: 2rem;
+  #app {
+    grid-template-rows: 4.5rem 4.5rem auto;
   }
 
-  div.breadcrumb span#page-title {
-    display: none;
+  header {
+    grid-column: span 12;
+    justify-content: center;
+  }
+
+  nav {
+    grid-column: span 12;
+    justify-content: space-between;
   }
 }
 
 @media screen and (max-width: 450px) {
+  nav a.nav-link,
+  div.nav-link {
+    text-align: center;
+    width: 33%;
+    padding: 0;
+    border: wheat 1px solid
+  }
 }
 </style>

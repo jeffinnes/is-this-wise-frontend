@@ -1,16 +1,23 @@
 <template>
-  <div class="intro-block">
-    <h1>Looking for some quick advice?</h1>
-    <h2>You are in the right spot!</h2>
-  </div>
+  <base-card class="intro-block">
+    <h1>Looking for some advice?</h1>
+  </base-card>
 
-  <div class="advice-container">
-    <span>{{ advice }}</span>
-  </div>
+  <base-card class="advice-card">
+    <div class="advice-container">
+      <base-ripple v-if="!canRequest"></base-ripple>
+      <span v-else>{{ advice }}</span>
+    </div>
 
-  <div class="user-choice">
-    <button @click="getAdvice">More Please!</button>
-  </div>
+    <div class="user-choice">
+      <base-button v-if="canRequest" @click="getAdvice"
+        >More Please!</base-button
+      >
+      <div v-if="!canRequest">
+        <p class="cooldown">Receiving wisdom from the ancients</p>
+      </div>
+    </div>
+  </base-card>
 </template>
 
 <script>
@@ -20,10 +27,13 @@ export default {
   data() {
     return {
       advice: '',
+      canRequest: true,
     };
   },
   methods: {
     getAdvice() {
+      this.canRequest = false;
+
       superagent
         .get('https://api.adviceslip.com/advice')
         .then((adviceRes) => {
@@ -33,6 +43,13 @@ export default {
         .catch((err) => {
           console.error(err);
         });
+
+      this.requestDelay();
+    },
+    requestDelay() {
+      setTimeout(() => {
+        this.canRequest = true;
+      }, 9000);
     },
   },
   mounted() {
@@ -42,53 +59,56 @@ export default {
 </script>
 
 <style scoped>
-div.user-choice button {
-  border-top: 1px solid #00df7e;
-  background: #24db8c;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#00b667),
-    to(#24db8c)
-  );
-  background: -webkit-linear-gradient(top, #00b667, #24db8c);
-  background: -moz-linear-gradient(top, #00b667, #24db8c);
-  background: -ms-linear-gradient(top, #00b667, #24db8c);
-  background: -o-linear-gradient(top, #00b667, #24db8c);
-  padding: 5px 10px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
-  color: #453645;
-  font-size: 14px;
-  font-family: "Literata", serif;
-  text-decoration: none;
-  vertical-align: middle;
-  font-size: 1.5rem;
-  width: 15rem;
-  height: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  div.intro-block {
+    grid-column: 4 / 10;
+    text-align: center;
+  }
 
-div.user-choice button:hover {
-  border-top-color: #00703f;
-  background: #00703f;
-  color: #ccc;
-}
+  div.advice-container {
+    height: 20rem;
+    background-color: rgba(240, 248, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 3 / 11;
+    font-size: 2.7rem;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
 
-div.user-choice button:active {
-  border-top-color: #014727;
-  background: #014727;
-}
+  div.advice-card {
+    grid-column: 3 / 11;
+    padding: 3rem;
+  }
 
-div.user-choice button span {
-  text-align: center;
-}
+  div.user-choice {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  p.cooldown {
+    height: 5rem;
+    font-size: 2rem;
+  }
+
+  @media screen and (max-width: 750px) {
+    div.intro-block {
+      grid-column: 2 / 12;
+    }
+
+    div.advice-card {
+      grid-column: span 12;
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    div.intro-block {
+      grid-column: span 12;
+    }
+
+    p.cooldown {
+      font-size: 1.6rem;
+    }
+  }
 </style>
