@@ -162,7 +162,7 @@ main.content-box {
 
 @media screen and (max-width: 450px) {
   html {
-    background-size: auto 100%;
+    background-size: auto 900px;
   }
 
   nav a.nav-link,
