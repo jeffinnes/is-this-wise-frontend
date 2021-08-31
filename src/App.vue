@@ -161,6 +161,10 @@ main.content-box {
 }
 
 @media screen and (max-width: 450px) {
+  html {
+    background-size: contain;
+  }
+
   nav a.nav-link,
   div.nav-link {
     text-align: center;
