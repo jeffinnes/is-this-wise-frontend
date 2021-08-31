@@ -43,7 +43,7 @@ font-family: 'Montserrat', sans-serif;
 html {
   height: 100%;
   font-size: 10px;
-  background-image: url('./assets/background/HillsandMountains-sunset.png');
+  background-image: url('./assets/background/HillsandMountains-sunset.svg');
   background-size: cover;
   background-attachment: fixed;
 }
