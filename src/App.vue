@@ -163,7 +163,7 @@ main.content-box {
   html {
     background-size: auto 900px;
   }
-  
+
   #app {
     overflow: scroll;
   }
