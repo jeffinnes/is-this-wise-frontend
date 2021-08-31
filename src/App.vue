@@ -57,7 +57,6 @@ body {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: rgb(2, 60, 104); */
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 4.5rem auto;
@@ -163,6 +162,10 @@ main.content-box {
 @media screen and (max-width: 450px) {
   html {
     background-size: auto 900px;
+  }
+  
+  #app {
+    overflow: scroll;
   }
 
   nav a.nav-link,
